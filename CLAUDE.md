@@ -12,7 +12,7 @@ Página estática de una sola vista (`index.html`) para comparar y votar opcione
 
 Restricciones a mantener al editar:
 
-- **No introducir tooling.** Cualquier cambio va dentro de `index.html`. No agregar frameworks, CSS externo ni paquetes.
+- **No introducir tooling ni dependencias.** Cualquier cambio va dentro de `index.html`. No agregar frameworks, CSS externo ni paquetes. Tampoco fuentes auto-hospedadas: decisión explícita del autor (14 ago 2026) tras ofrecerle cambiar la cara de display. La voz tipográfica es Georgia + `system-ui`; no declarar caras que la página no envía, porque entonces cada lector ve una distinta.
 - **Cada opción es un `<article class="card" data-option="Nombre">`.** El `data-option` es la clave de identidad: se guarda en `localStorage` bajo `spaChoice` y se compara en `paint()`. Si se renombra una tarjeta, los votos guardados de ese nombre dejan de coincidir.
 - **Las portadas son screenshots automáticos** vía `https://s.wordpress.com/mshots/v1/<url-encoded>?w=1000`, con `onerror` que oculta la imagen y deja ver el gradiente de fondo (`.cover.rose/.plum/.sage/.gold/.blue/.night`). Al añadir una opción hay que url-encodear la URL oficial en el `src`.
 - **Estado del voto:** solo `localStorage`, un dispositivo, sin backend. `shareChoice()` usa `navigator.share` con fallback a `navigator.clipboard`.
